@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">INFO6130Lab1</string>
+    <string name="name">JIANWEI WANG</string>
+    <string name="add">Add Item</string>
+    <string name="set_date">Set Date</string>
+    <string name="show_items">Show Items</string>
+    <string name="assignment">assignment</string>
+</resources>
