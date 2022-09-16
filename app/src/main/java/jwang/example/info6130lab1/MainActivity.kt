@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.EditText
+import android.widget.Toast
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -55,17 +56,23 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.buttonAddItem -> {
                 Log.d(TAG, "add button pressed.")
+
                 val assignmentEditText = findViewById<EditText>(R.id.editTextAssignment)
                 val assignmentName = assignmentEditText.text.toString()
-                Log.d(TAG, "Assignment Name is $assignmentName on $date")
-                val item = Item(date, assignmentName)
-                items.add(item)
-                val intent = Intent(this, SecondActivity::class.java)
-//                intent.putExtra(DATE, date)
-//                intent.putExtra(NAME, assignmentName)
-
-                startActivity(intent)
-
+                if (assignmentName.isEmpty()){
+                    Toast.makeText(this, "Please enter the assignment.", Toast.LENGTH_SHORT).show()
+                } else {
+                    if (date.isEmpty()){
+                        Toast.makeText(this, "Please select a date.", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Log.d(TAG, "Assignment Name is $assignmentName on $date")
+                        val item = Item(date, assignmentName)
+                        items.add(item)
+                        assignmentEditText.setText("")
+                        val intent = Intent(this, SecondActivity::class.java)
+                        startActivity(intent)
+                    }
+                }
             }
         }
     }

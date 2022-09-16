@@ -20,30 +20,19 @@ class ItemFragment : Fragment() {
 
     private var columnCount = 1
 
-    //var items = ArrayList<Item>()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
             columnCount = it.getInt(ARG_COLUMN_COUNT)
         }
-
-
-
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-//        val item = Item((activity as SecondActivity).date, (activity as SecondActivity).assignmentName)
-//        items.add(item)
-//        Log.d("jianwei", "listFrag created. $items")
         val view = inflater.inflate(R.layout.fragment_item_list, container, false)
-
-        // Set the adapter
         if (view is RecyclerView) {
             with(view) {
                 layoutManager = when {
@@ -55,8 +44,6 @@ class ItemFragment : Fragment() {
         }
         return view
     }
-
-
 
     companion object {
 
