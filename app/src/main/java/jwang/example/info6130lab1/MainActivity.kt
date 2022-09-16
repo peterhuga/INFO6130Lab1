@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.EditText
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -45,6 +46,9 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.buttonAddItem -> {
                 Log.d(TAG, "add button pressed.")
+                val assignmentEditText = findViewById<EditText>(R.id.editTextAssignment)
+                val assignmentName = assignmentEditText.text.toString()
+                Log.d(TAG, "Assignment Name is $assignmentName on $date")
 
             }
         }
