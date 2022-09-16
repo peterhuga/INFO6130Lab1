@@ -15,7 +15,7 @@ import jwang.example.info6130lab1.databinding.FragmentItemBinding
  */
 class
 MyItemRecyclerViewAdapter(
-    private val values: List<PlaceholderItem>
+    private val values: ArrayList<Item>
 ) : RecyclerView.Adapter<MyItemRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -32,8 +32,8 @@ MyItemRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-        holder.idView.text = item.id
-        holder.contentView.text = item.content
+        holder.idView.text = item.date
+        holder.contentView.text = item.name
     }
 
     override fun getItemCount(): Int = values.size

@@ -2,6 +2,7 @@ package jwang.example.info6130lab1
 
 import android.app.ActionBar
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import jwang.example.info6130lab1.MainActivity.Companion.items
 import jwang.example.info6130lab1.placeholder.PlaceholderContent
 
 /**
@@ -18,6 +20,8 @@ class ItemFragment : Fragment() {
 
     private var columnCount = 1
 
+    //var items = ArrayList<Item>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -25,12 +29,18 @@ class ItemFragment : Fragment() {
             columnCount = it.getInt(ARG_COLUMN_COUNT)
         }
 
+
+
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+//        val item = Item((activity as SecondActivity).date, (activity as SecondActivity).assignmentName)
+//        items.add(item)
+//        Log.d("jianwei", "listFrag created. $items")
         val view = inflater.inflate(R.layout.fragment_item_list, container, false)
 
         // Set the adapter
@@ -40,11 +50,13 @@ class ItemFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = MyItemRecyclerViewAdapter(PlaceholderContent.ITEMS)
+                adapter = MyItemRecyclerViewAdapter(MainActivity.items)
             }
         }
         return view
     }
+
+
 
     companion object {
 

@@ -5,7 +5,12 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 
 
+
 class SecondActivity : AppCompatActivity() {
+
+    var date = ""
+    var assignmentName = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)

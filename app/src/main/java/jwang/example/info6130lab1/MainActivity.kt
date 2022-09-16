@@ -9,11 +9,20 @@ import android.view.View
 import android.widget.EditText
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 const val TAG = "Jianwei"
-private var date: String = ""
+
 
 class MainActivity : AppCompatActivity() {
+
+    companion object {
+        const val DATE = "date"
+        const val NAME = "name"
+        var items = ArrayList<Item>()
+    }
+
+    private var date: String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -49,6 +58,13 @@ class MainActivity : AppCompatActivity() {
                 val assignmentEditText = findViewById<EditText>(R.id.editTextAssignment)
                 val assignmentName = assignmentEditText.text.toString()
                 Log.d(TAG, "Assignment Name is $assignmentName on $date")
+                val item = Item(date, assignmentName)
+                items.add(item)
+                val intent = Intent(this, SecondActivity::class.java)
+//                intent.putExtra(DATE, date)
+//                intent.putExtra(NAME, assignmentName)
+
+                startActivity(intent)
 
             }
         }
